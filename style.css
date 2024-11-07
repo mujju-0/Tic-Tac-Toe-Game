@@ -1,0 +1,64 @@
+:root {
+    /* colors */
+    --currentPlayer-color: blue;
+    --bg-color: red;
+    --board-color: purple;
+
+    /* Fonts Size */
+    --font-size: 1rem;
+    --smallfont-size: 20px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 100vh;
+    background-color: var(--bg-color);
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+}
+
+#main_div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    width: 30vw;
+    height: 30vh;
+}
+
+#main_div > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--board-color);
+    background-color: var(--board-color);
+    font-size: var(--font-size);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#main_div > button:hover {
+    background-color: var(--currentPlayer-color);
+}
+
+#status {
+    margin-top: 1rem;
+    font-size: var(--smallfont-size);
+    font-weight: bold;
+    color: white;
+}
