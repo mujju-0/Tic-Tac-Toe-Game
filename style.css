@@ -1,14 +1,16 @@
-:root {
-    /* colors */
-    --currentPlayer-color: blue;
-    --bg-color: red;
-    --board-color: purple;
+ :root {
+    /* Colors */
+    --currentPlayer-color: #ae823a;
+    --bg-color:#c6ac8f;
+    --board-color: #c6ac8f;
+    --org-color:#3e3d3a ;
 
-    /* Fonts Size */
-    --font-size: 1rem;
+    /* Font Sizes */
+    --font-size: 2rem;
     --smallfont-size: 20px;
 }
 
+/* Global styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -18,6 +20,7 @@ body {
     background-color: var(--bg-color);
 }
 
+/* Main container */
 main {
     position: absolute;
     top: 50%;
@@ -28,37 +31,194 @@ main {
     align-items: center;
     justify-content: center;
     background-color: var(--bg-color);
+    width: 90%;
+    max-width: 600px; /* Prevents the main section from getting too wide on large screens */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
+/* Score board  */
+#score{
+    font-weight: bold;
+    font-size: 18px;
+}
+/* Game board grid */
 #main_div {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 5px;
-    width: 30vw;
-    height: 30vh;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1; /* Keeps the grid square */
 }
 
+/* Button styles inside the grid */
 #main_div > button {
+    border: solid var(--org-color) !important;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px solid var(--board-color);
     background-color: var(--board-color);
     font-size: var(--font-size);
-    color: white;
+    color: var(--org-color);
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+    padding: 15px;
 }
 
+/* Button hover effect */
 #main_div > button:hover {
     background-color: var(--currentPlayer-color);
 }
 
-#status {
-    margin-top: 1rem;
+/* Disabled button styles */
+#main_div button:disabled {
+    background-color: #f0f0f0;
+}
+
+/* Action buttons (Start, Restart) */
+#buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+#buttons > button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    color: var(--board-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+#buttons > #start-btn{
+    background-color: #fff;
+    color: green;
+}
+
+#buttons > #start-btn:hover {
+    color: #fff;
+    background-color: green;
+}
+
+#buttons > #restart-btn{
+    background-color: #fff;
+    color: red;
+}
+#buttons > #restart-btn:hover {
+    color: #fff;
+    background-color: #ca0707;
+}
+
+/* Message display */
+#message {
+    margin-top: 20px;
     font-size: var(--smallfont-size);
     font-weight: bold;
-    color: white;
+    color: blue;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablet devices (up to 768px) */
+@media (max-width: 768px) {
+    /* Reduce font size for smaller screens */
+    /* :root {
+        --font-size: 2.1rem;
+    } */
+
+    /* Main section */
+    main {
+        width: 60%; /* Allow more space */
+        max-width: 350px; /* Adjust max-width for tablet sizes */
+    }
+
+    /* Game board size */
+    #main_div {
+        width: 80%; /* Slightly smaller game board */
+    }
+
+    /* Button padding for small devices */
+    #main_div > button { 
+        /* border: solid black; */
+        padding: 12px;
+        font-size: var(--font-size);
+    }
+
+    /* Action buttons (Start, Restart) */
+    #buttons > button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    #message {
+        font-size: var(--smallfont-size);
+    }
+}
+
+/* Mobile phones (up to 480px) */
+@media (max-width: 480px) {
+    /* Further adjust font size */
+    /* :root {
+        --font-size: 0.8rem;
+        --smallfont-size: 16px;
+    } */
+
+    /* Reduce main section padding */
+    main {
+        width: 50%; /* Allow full width */
+        max-width: 250px; /* Set max-width for small phones */
+        padding: 15px;
+    }
+
+    /* Game board grid adjustments */
+    #main_div {
+        width: 80%;
+    }
+
+    /* Button adjustments for smaller devices */
+    #main_div > button {
+        font-size: var(--font-size);
+        padding: 10px; /* Less padding on smaller screens */
+        width: 70px; /* Smaller button size */
+        height: 70px;
+    }
+
+    /* Action buttons (Start, Restart) */
+    #buttons > button {
+        padding: 7px 14px;
+        font-size: 12px;
+    }
+
+    /* Message display font size */
+    #message {
+        font-size: var(--smallfont-size);
+    }
+}
+
+/* Larger Screens (Laptops, Desktops) - (larger than 768px) */
+@media (min-width: 769px) {
+    main {
+        width: 70%; /* More space for laptop screens */
+    }
+
+    /* Game board grid settings for larger screens */
+    #main_div {
+        width: 50%;
+    }
+
+    #main_div > button {
+        padding: 15px; /* Standard padding */
+        font-size: 3rem; 
+    }
+
+    #buttons > button {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
 }
